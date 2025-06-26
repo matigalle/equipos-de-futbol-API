@@ -1,8 +1,8 @@
 package equiposdefutbolapi.service;
 
 import equiposdefutbolapi.configuration.JwtService;
-import equiposdefutbolapi.dto.AuthenticationRequest;
-import equiposdefutbolapi.dto.AuthenticationResponse;
+import equiposdefutbolapi.dto.request.AuthenticationRequest;
+import equiposdefutbolapi.dto.response.AuthenticationResponse;
 import equiposdefutbolapi.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
