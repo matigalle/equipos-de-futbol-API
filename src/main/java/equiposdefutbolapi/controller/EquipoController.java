@@ -2,6 +2,7 @@ package equiposdefutbolapi.controller;
 
 import equiposdefutbolapi.model.Equipo;
 import equiposdefutbolapi.service.EquipoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/equipos")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class EquipoController {
 
     private final EquipoService service;
