@@ -9,6 +9,7 @@ import org.springframework.security.crypto.keygen.Base64StringKeyGenerator;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Base64;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -16,7 +17,8 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = new Base64StringKeyGenerator(32).generateKey();
+    private static final Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
+    private static final String SECRET_KEY = new Base64StringKeyGenerator(encoder, 32).generateKey();
 
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
@@ -28,7 +30,7 @@ public class JwtService {
     }
 
     private SecretKey getSingInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64URL.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
