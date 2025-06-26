@@ -28,7 +28,12 @@ public class SecurityConfiguration {
                         configurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests(registry ->
                         registry
-                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers(
+                                        "/auth/**",
+                                        "/swagger-ui/index.html",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**"
+                                ).permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(configurer ->
                         configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
