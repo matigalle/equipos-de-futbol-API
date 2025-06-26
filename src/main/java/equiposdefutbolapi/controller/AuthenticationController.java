@@ -1,16 +1,15 @@
 package equiposdefutbolapi.controller;
 
-import equiposdefutbolapi.dto.AuthenticationRequest;
-import equiposdefutbolapi.dto.AuthenticationResponse;
+import equiposdefutbolapi.dto.request.AuthenticationRequest;
+import equiposdefutbolapi.dto.response.AuthenticationResponse;
+import equiposdefutbolapi.exception.BadRequestException;
 import equiposdefutbolapi.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 @RequestMapping("/auth")
@@ -27,7 +26,7 @@ public class AuthenticationController {
 
     private void validateRequest(AuthenticationRequest request) {
         if (request.getUsername() == null || request.getPassword() == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "La solicitud es inválida");
+            throw new BadRequestException();
         }
     }
 

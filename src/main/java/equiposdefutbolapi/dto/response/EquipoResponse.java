@@ -1,4 +1,4 @@
-package equiposdefutbolapi.dto;
+package equiposdefutbolapi.dto.response;
 
 import lombok.Data;
 
