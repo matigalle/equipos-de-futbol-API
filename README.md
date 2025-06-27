@@ -33,8 +33,8 @@ Allí se encuentra información detallada sobre cada endpoint, incluyendo parám
 
 ### Autenticación
 
-1) Autenticarse utilizando el endpoint ```/auth/login``` para obtener un token
-2) Utilizar el token para acceder a los endpoints protegidos
+1) Obtener un token: autenticarse utilizando el endpoint ```/auth/login``` para obtener un token. Para ello, enviar una  
+solicitud POST con los campos "username" y "password".
 
 Para realizar pruebas, se puede utilizar el siguiente usuario por defecto:
 
@@ -43,4 +43,11 @@ Para realizar pruebas, se puede utilizar el siguiente usuario por defecto:
   "username": "test",
   "password": "12345"
 }
+```
+
+2) Utilizar el token: una vez obtenido el token, incluirlo en el encabezado Authorization para acceder a los endpoints  
+protegidos, utilizando el formato Bearer:
+
+```
+Authorization: Bearer token
 ```
